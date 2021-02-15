@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeatingTable extends Migration
+class CreateOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateSeatingTable extends Migration
      */
     public function up()
     {
-        Schema::create('seating', function (Blueprint $table) {
+        Schema::create('options', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('seating_id')->constrained('seatings')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('days_id')->constrained('days')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateSeatingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seating');
+        Schema::dropIfExists('options');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOptionTable extends Migration
+class CreateSeatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateOptionTable extends Migration
      */
     public function up()
     {
-        Schema::create('option', function (Blueprint $table) {
+        Schema::create('seatings', function (Blueprint $table) {
             $table->id();
+            $table->string('time');
+            $table->foreignId('experience_id')->constrained('experience')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateOptionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('option');
+        Schema::dropIfExists('seatings');
     }
 }

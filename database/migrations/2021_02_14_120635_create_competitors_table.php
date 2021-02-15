@@ -15,6 +15,7 @@ class CreateCompetitorsTable extends Migration
     {
         Schema::create('competitors', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('count');
             $table->timestamps();
         });
     }
