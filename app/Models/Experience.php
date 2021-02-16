@@ -10,4 +10,8 @@ class Experience extends Model
     use HasFactory;
     protected $table = 'experience';
     protected $fillable = ['name', 'description', 'tables'];
+    
+    public function seatings(){
+        return $this->hasMany(Seating::class, 'experience_id' , 'id');
+    }
 }

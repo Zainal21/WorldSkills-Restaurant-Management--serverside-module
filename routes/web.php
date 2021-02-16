@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{PagesController};
+use App\Http\Controllers\{
+  PagesController,
+  BookingController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +18,6 @@ use App\Http\Controllers\{PagesController};
 */
 
 Route::get('/', [PagesController::class, 'index']);
+Route::get('/booking/reservation', [BookingController::class, 'index'])->name('booking.reservation');
+Route::post('/booking/reservation', [BookingController::class, 'store'])->name('bookingreservation.save');
+Route::get('/booking/guest', [BookingController::class, 'getGuest'])->name('booking.guests');

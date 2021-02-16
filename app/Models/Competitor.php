@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Competitor extends Model
 {
     use HasFactory;
+    protected $table = 'competitors';
+    protected $filable = ['count'];
 }

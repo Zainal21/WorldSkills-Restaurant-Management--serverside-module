@@ -10,4 +10,8 @@ class Day extends Model
     use HasFactory;
     protected $table = 'days';
     protected $fillable = ['name', 'date'];
+
+    public function Option(){
+        return $this->belongsTo(Day::class, 'day_id', 'id');
+    }
 }

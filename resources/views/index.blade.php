@@ -17,19 +17,38 @@
                     </colgroup>
                     <thead>
                       <tr>
-                        <th>Expericee</th>
+                        {{-- untuk meloop nama dari experience --}}
+                        @foreach ($exps as $exp)
+                        <th>{{$exp->name}}</th>
+                        @endforeach
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>experience</td>
+                        {{-- untuk me-loop description --}}
+                        @foreach ($exps as $item)
+                        <td>{{$item->description}}</td>
+                        @endforeach
                       </tr>
                       <tr>
-                        <td>experience</td>
+                        {{-- untuk me-loop table yang tersedia --}}
+                        @foreach ($exps as $item)
+                        <td>Tables of   {{$item->tables}}</td>
+                        @endforeach
+                      </tr>
+                      <tr>
+                        {{-- untuk me-loop kursi --}}
+                        @foreach($exps as $exp)
+                        <td>
+                            @foreach($exp->seatings as $seating)
+                                Seating{{ $loop->count !== 1 ? ' ' . $loop->iteration : '' }}: {{ $seating->time }}<br>
+                            @endforeach
+                        </td>
+                        @endforeach
                       </tr>
                     </tbody>
                 </table>
-                <a href="" class="btn btn-primary m-auto">Star Booking</a>
+                <a href="{{route('booking.reservation')}}" class="btn btn-primary m-auto">Star Booking</a>
             </div>
         </div>
     </div>
