@@ -11,7 +11,7 @@ class Day extends Model
     protected $table = 'days';
     protected $fillable = ['name', 'date'];
 
-    public function Option(){
-        return $this->belongsTo(Day::class, 'day_id', 'id');
+    public function options(){
+        return $this->hasMany(Day::class, 'day_id', 'id');
     }
 }
